@@ -27,7 +27,7 @@ class GlobalEnvironment(gym.Env):
         else: 
             self.stop = time_horizon
         self.verbose = verbose
-        self.best_score_ever = -np.Inf
+        self.best_score_ever = -np.inf
         self.current = [0,0]
         self.reset()
     
@@ -55,7 +55,7 @@ class GlobalEnvironment(gym.Env):
 
         self.timestep_it = 0
         self.old_value = self.value_fun(self.graph, self.normalize)
-        self.best_score_in_episode = -np.Inf
+        self.best_score_in_episode = -np.inf
         observation = self.state_to_observation()
         info = {}
         return observation, info

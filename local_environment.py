@@ -26,7 +26,7 @@ class LocalEnvironment(gym.Env):
                 self.stop = self.number_of_nodes*(self.number_of_nodes - 1) // 2
         else: 
             self.stop = time_horizon
-        self.best_score_ever = -np.Inf
+        self.best_score_ever = -np.inf
         self.verbose = verbose
  
         self.reset()
@@ -60,7 +60,7 @@ class LocalEnvironment(gym.Env):
         self.old_value = self.value_fun(self.graph,self.normalize)
         self.timestep_it = 0
 
-        self.best_score_in_episode = -np.Inf
+        self.best_score_in_episode = -np.inf
         observation = self.state_to_observation()
         info = {}
         return observation, info

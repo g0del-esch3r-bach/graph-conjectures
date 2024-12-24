@@ -22,7 +22,7 @@ class LinearEnvironment(gym.Env):
         self.dense_reward = dense_reward
         self.init = init_graph
         self.start_with_complete_graph = start_with_complete_graph
-        self.best_score_ever = -np.Inf
+        self.best_score_ever = -np.inf
         self.verbose = verbose
         self.current = [0,0]
         
@@ -73,7 +73,7 @@ class LinearEnvironment(gym.Env):
         
         self.old_value = self.value_fun(self.graph, self.normalize)
         
-        self.best_score_in_episode = -np.Inf
+        self.best_score_in_episode = -np.inf
         observation = self.state_to_observation()
         info = {}
         return observation, info

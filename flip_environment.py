@@ -28,7 +28,7 @@ class FlipEnvironment(gym.Env):
             self.stop = time_horizon
         self.verbose = verbose
         self.current = [0,0]
-        self.best_score_ever = -np.Inf
+        self.best_score_ever = -np.inf
         self.reset()
     
     def state_to_observation(self):
@@ -56,7 +56,7 @@ class FlipEnvironment(gym.Env):
         self.timestep_it = 0
         self.timestep = np.zeros(shape, dtype=np.int8)
         self.old_value = self.value_fun(self.graph, self.normalize)
-        self.best_score_in_episode = -np.Inf
+        self.best_score_in_episode = -np.inf
         observation = self.state_to_observation()
         info = {}
         return observation, info
