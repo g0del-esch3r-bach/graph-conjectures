@@ -38,7 +38,7 @@ def select_value_fun():
 
     value_fun_var = tk.StringVar()
 
-    value_funs = ["Wagner", "Brouwer"]
+    value_funs = ["Wagner", "Brouwer","A001349"]
     for fun in value_funs:
         ttk.Radiobutton(root, text=fun, variable=value_fun_var, value=fun).pack(anchor=tk.W, padx=30, pady=5)
 
