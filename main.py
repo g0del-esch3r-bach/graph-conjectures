@@ -16,6 +16,8 @@ def select_value_fun():
             selected_value_fun = value_fun_wagner
         elif value_fun_name == "Brouwer":
             selected_value_fun = value_fun_brouwer
+        elif value_fun_name == "A001349":
+            selected_value_fun = value_fun_A001349
         else:
             messagebox.showerror("Error", "Select a value function to proceed.")
             return
@@ -138,6 +140,18 @@ def value_fun_brouwer(graph, normalize):
     binomials = np.array([i*(i+1)/2 for i in range(1,n+1)])
     diff = sums - (binomials + m)
     reward = max(diff[2:n-2]).real / n if normalize else max(diff[2:n-2]).real
+    return reward
+
+def value_fun_A001349(graph, normalize=False):
+    g = nx.Graph(graph)
+    n = g.number_of_nodes()
+    alpha = 0.767*(n+1)/(n+4)
+    if nx.is_connected(g):
+        avglen = nx.average_shortest_path_length(graph)
+        edges = graph.number_of_edges()
+        reward = (3*alpha*avglen/(n+1)) + (2*(1-alpha)*edges/n/(n-1)) - ((2*(n-2)*alpha/(n+1)+1)*(2/n)) # if normalize else wagner
+    else:
+        reward = -1000 # if normalize else -n*4
     return reward
 
 def main_game(game_name, number_of_nodes, value_fun, dense_reward):
