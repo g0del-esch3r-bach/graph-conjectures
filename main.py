@@ -145,13 +145,14 @@ def value_fun_brouwer(graph, normalize):
 def value_fun_A001349(graph, normalize=False):
     g = nx.Graph(graph)
     n = g.number_of_nodes()
-    alpha = 0.767*(n+1)/(n+4)
     if nx.is_connected(g):
-        avglen = nx.average_shortest_path_length(graph)
-        edges = graph.number_of_edges()
-        reward = (3*alpha*avglen/(n+1)) + (2*(1-alpha)*edges/n/(n-1)) - ((2*(n-2)*alpha/(n+1)+1)*(2/n)) # if normalize else wagner
+        alpha = 0.767*(n+1)/(n+4)
+        avglen = nx.average_shortest_path_length(g)
+        edges = g.number_of_edges()
+        costdiff = - (3*alpha*avglen/(n+1)) - (2*(1-alpha)*edges/n/(n-1)) + ((2*(n-2)*alpha/(n+1)+1)*(2/n))
+        reward = costdiff if normalize else costdiff
     else:
-        reward = -1000 # if normalize else -n*4
+        reward = -1434 if normalize else -1434
     return reward
 
 def main_game(game_name, number_of_nodes, value_fun, dense_reward):
