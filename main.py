@@ -38,7 +38,7 @@ def select_value_fun():
 
     value_fun_var = tk.StringVar()
 
-    value_funs = ["Wagner", "Brouwer","A001349"]
+    value_funs = ["Wagner", "Brouwer", "A001349"]
     for fun in value_funs:
         ttk.Radiobutton(root, text=fun, variable=value_fun_var, value=fun).pack(anchor=tk.W, padx=30, pady=5)
 
@@ -146,7 +146,7 @@ def value_fun_A001349(graph, normalize=False):
     g = nx.Graph(graph)
     n = g.number_of_nodes()
     if nx.is_connected(g):
-        alpha = 0.767*(n+1)/(n+4)
+        alpha = 0.99*(n+1)/(n+4)
         avglen = nx.average_shortest_path_length(g)
         edges = g.number_of_edges()
         costdiff = - (3*alpha*avglen/(n+1)) - (2*(1-alpha)*edges/n/(n-1)) + ((2*(n-2)*alpha/(n+1)+1)*(2/n))
