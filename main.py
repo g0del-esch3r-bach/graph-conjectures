@@ -152,7 +152,7 @@ def value_fun_A001349(graph, normalize=False):
         costdiff = - (3*alpha*avglen/(n+1)) - (2*(1-alpha)*edges/n/(n-1)) + ((2*(n-2)*alpha/(n+1)+1)*(2/n))
         reward = costdiff if normalize else costdiff
     else:
-        reward = -1434 if normalize else -1434
+        reward = -6 if normalize else -6
     return reward
 
 def main_game(game_name, number_of_nodes, value_fun, dense_reward):
